@@ -21,7 +21,7 @@ def home():
     
     return render_template("index.html")
 
-    # Route for handling the login page logic
+# Route for handling the login page logic
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
