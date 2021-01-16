@@ -10,8 +10,6 @@ from flask_login import (
     login_user,
     logout_user,
 )
-from oauthlib.oauth2 import WebApplicationClient
-import requests
 
 #PICTURE_FOLDER = os.path.join('static', 'picture_photo')
 
