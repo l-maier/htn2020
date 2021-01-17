@@ -5,15 +5,18 @@ from linkedinScraper import LinkedinScraper
 
 app = Flask(__name__)
 
-scrapp = LinkedinScraper()
 
 @app.route('/')
 def home():  
     return render_template("index.html")
 
 @app.route('/go', methods=["POST"])
+
 def letsgo():
+    usr_email = request.form.get('email')
+    usr_password = request.form.get('password')
     url_input = request.form.get('url')
+    scrapp = LinkedinScraper(usr_email,usr_password)
     scrapp.scrap(url_input)
     about = scrapp.getAbout()
     return about

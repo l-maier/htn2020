@@ -19,13 +19,29 @@
   </head>
 
   <body id="landing">
-      <div class="typewriter d-inline-flex text-black">
-        <div class="p-2"></div>
-        <div class="p-2">
-          <h1>Welcome to Rate your LinkedIn</h1>
-        </div>
-        <div class="p-2"></div>
+      <div class="main typewriter d-inline-flex">
+        <h1>How bad is your LinkedIn?</h1>
       </div>
+      <div class="typewriter">
+        <p>
+          Hi. I’m an algorithm based robot trained to critique your LinkedIn profile. 
+          First, I’ll need to take a look at your LinkedIn profile. 
+        </p>
+      </div>
+      <div class="row">
+        <div class="column">
+
+        </div>
+      </div>
+
+      <!-- LinkedIn Credentials -->
+      <form action="/go" method="POST">
+        <input type="text" name="email" id="email" value=''>
+        <input type="password" name="password" id="password">
+        <input type="submit" value="Let's see how bad this is">
+        <input type="text" name="url" id="url" value='https://www.linkedin.com/in/erin-zhong/'>
+      </form>
+
       <form action="/go" method="POST">
         <input type="text" name="url" id="url" value='https://www.linkedin.com/in/erin-zhong/'>
         <input type="submit" value="Go">
