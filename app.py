@@ -1,36 +1,30 @@
 from flask import Flask, request, render_template, redirect, url_for
 import json
 import os
-
-from flask import Flask, redirect, request, url_for
-from flask_login import (
-    LoginManager,
-    current_user,
-    login_required,
-    login_user,
-    logout_user,
-)
-
-#PICTURE_FOLDER = os.path.join('static', 'picture_photo')
+from linkedinScraper import LinkedinScraper
 
 app = Flask(__name__)
-#app.config['UPLOAD_FOLDER'] = PICTURE_FOLDER
+
 
 @app.route('/')
-def home():
-    
+def home():  
     return render_template("index.html")
 
-# Route for handling the login page logic
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    error = None
-    if request.method == 'POST':
-        if request.form['username'] != 'admin' or request.form['password'] != 'admin':
-            error = 'Invalid Credentials. Please try again.'
-        else:
-            return redirect(url_for('home'))
-    return render_template('login.html', error=error)
+@app.route('/go', methods=["POST"])
+
+def letsgo():
+    usr_email = request.form.get('email')
+    usr_password = request.form.get('password')
+    url_input = request.form.get('url')
+    scrapp = LinkedinScraper(usr_email,usr_password)
+    scrapp.scrap(url_input)
+
+    about = scrapp.getAbout()
+    edu = scrapp.getEducation()
+    job = scrapp.getCompany()
+    title = scrapp.getTitle()
+
+    return  about + "\n\n" + edu + "\n" + job + "\n" + title
 
 
 if __name__ == '__main__':
