@@ -75,6 +75,7 @@ def questions():
         return 'wow no'
     return 'huh ?'
     """
+    global state
     state = state + 1
     while state < 4 and has_question[state] == False:
         state = state + 1
