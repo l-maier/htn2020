@@ -33,7 +33,7 @@ class LinkedinScraper:
             return ''
 
     def getTitle(self):
-        if self.person is not None and self.person.job_title:
+        if self.person is not None:
             return str(self.person.job_title)
         else:
             return ''
