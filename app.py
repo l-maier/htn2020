@@ -67,7 +67,7 @@ def letsgo():
 
 
 @app.route('/huh', methods=["POST"])
-def question():
+def questions():
     """
     if request.form['answer'] == yes_answer[state]:
         return 'wow yes'
