@@ -18,8 +18,13 @@ def letsgo():
     url_input = request.form.get('url')
     scrapp = LinkedinScraper(usr_email,usr_password)
     scrapp.scrap(url_input)
+
     about = scrapp.getAbout()
-    return about
+    edu = scrapp.getEducation()
+    job = scrapp.getCompany()
+    title = scrapp.getTitle()
+
+    return  about + "\n\n" + edu + "\n" + job + "\n" + title
 
 if __name__ == '__main__':
     app.run(debug=True, host='localhost',port=5001)

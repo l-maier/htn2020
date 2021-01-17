@@ -2,8 +2,6 @@ from linkedin_scraper import Person, actions
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 
-
-
 class LinkedinScraper:
 
     def __init__(self, email, password):
@@ -14,10 +12,29 @@ class LinkedinScraper:
     
     def scrap(self, url):
         self.person = Person(url, driver=self.driver)
-        print(self.person)
+        #print(self.person)
     
     def getAbout(self):
         if self.person is not None and self.person.about is not []:
             return str(self.person.about[0])
         else:
             return ''
+
+    def getEducation(self):
+        if self.person is not None and self.person.educations is not []:
+            return str(self.person.educations[0])
+        else:
+            return ''
+        
+    def getCompany(self):
+        if self.person is not None and self.person.company:
+            return str(self.person.company)
+        else:
+            return ''
+
+    def getTitle(self):
+        if self.person is not None and self.person.job_title:
+            return str(self.person.job_title)
+        else:
+            return ''
+
