@@ -22,24 +22,42 @@ def letsgo():
     scrapp = LinkedinScraper(usr_email,usr_password)
     scrapp.scrap(url_input)
 
-    about = scrapp.getAbout()
-    edu = scrapp.getEducation()
-    job = scrapp.getCompany()
-    title = scrapp.getTitle()
+    about = scrapp.getAbout() # state 0
+    edu = scrapp.getEducation() # state 1
+    job = scrapp.getCompany() # state 2
+    title = scrapp.getTitle() # state 3
 
     if about != '':
         has_question[0] = True
-        question[0] = ''
-        yes_answer[0] = ''
-        no_answer[0] = ''
+        question[0] = 'about'
+        yes_answer[0] = 'yes'
+        no_answer[0] = 'no'
     else:
         has_question[0] = False
     
     if edu != '':
         has_question[1] = True
-        ## copy paste this for everything
+        question[1] = 'edu'
+        yes_answer[1] = 'yes'
+        no_answer[1] = 'no'
     else:
         has_question[1] = False
+
+    if job != '':
+        has_question[2] = True
+        question[2] = 'about'
+        yes_answer[2] = 'yes'
+        no_answer[2] = 'no'
+    else:
+        has_question[2] = False
+
+    if title != '':
+        has_question[3] = True
+        question[3] = 'about'
+        yes_answer[3] = 'yes'
+        no_answer[3] = 'no'
+    else:
+        has_question[3] = False
     
     state = -1
     question[-1] = 'Are you ready?'
