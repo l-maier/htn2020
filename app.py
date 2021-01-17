@@ -37,7 +37,7 @@ def letsgo():
     
     if edu != '':
         has_question[1] = True
-        question[1] = 'edu'
+        question[1] = 'I see you went to the ' + edu[edu.find("Uni"):]
         yes_answer[1] = 'yes'
         no_answer[1] = 'no'
     else:
@@ -45,7 +45,7 @@ def letsgo():
 
     if job != '':
         has_question[2] = True
-        question[2] = 'about'
+        question[2] = 'I see you work at ' + job
         yes_answer[2] = 'yes'
         no_answer[2] = 'no'
     else:
@@ -53,7 +53,7 @@ def letsgo():
 
     if title != '':
         has_question[3] = True
-        question[3] = 'about'
+        question[3] = 'So your title is: ' + title
         yes_answer[3] = 'yes'
         no_answer[3] = 'no'
     else:
@@ -63,7 +63,7 @@ def letsgo():
     question[-1] = 'Are you ready?'
     yes_answer[-1] = 'Yes...'
     no_answer[-1] = 'No but do I have a choice?'
-    return render_template('questions.html', question=question[state], yes=yes_answer[state], no=[state])
+    return render_template('questions.html', question=question[state], yes=yes_answer[state], no=no_answer[state])
 
 
 @app.route('/huh', methods=["POST"])
@@ -81,7 +81,7 @@ def questions():
         state = state + 1
 
     if state < 4:
-        return render_template('questions.html', question=question[state], yes=yes_answer[state], no=[state])
+        return render_template('questions.html', question=question[state], yes=yes_answer[state], no=no_answer[state])
     else:
         return render_template('ending.html')
 
